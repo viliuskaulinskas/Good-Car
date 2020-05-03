@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d"
              x:Class="Good_Car.Views.AboutPage"
              xmlns:vm="clr-namespace:Good_Car.ViewModels"
@@ -20,14 +21,47 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid>
+    <Grid RowSpacing="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="AUTO"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
+        <!--All fares listed-->
+        <BoxView BackgroundColor="#323c4d" Grid.Row="0" />
+     
+        <!--Map in thebackground-->
+        <maps:Map x:Name="map"
+                  Grid.Row="1"
+                  IsShowingUser="true"
+                  />
         
+        <!--Button to edit fares-->
+        <ImageButton Source="pen.png" 
+            Grid.Row="1"
+            BackgroundColor="#ff5d57"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            WidthRequest="56"
+            CornerRadius="28"
+            Padding="10"
+            Margin="50"/>
+
+        <!--Start calculating trip price-->
+        <Button Text=">>>   START TRIP"
+                Grid.Row="1"
+                VerticalOptions="End"
+                Margin="10"
+                TextColor="White"
+                BackgroundColor="#6be36b"
+                FontSize="20"
+                FontAttributes="Bold"
+                Clicked="OnStartClicked">
+            <!--<Button.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped"/>
+            </Button.GestureRecognizers>-->
+        </Button>
+
         <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />

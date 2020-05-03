@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace Good_Car.Views
 {
@@ -13,6 +14,11 @@ namespace Good_Car.Views
         public AboutPage()
         {
             InitializeComponent();
+        }
+
+        async void OnStartClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
     }
 }
