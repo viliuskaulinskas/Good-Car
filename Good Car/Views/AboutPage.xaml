@@ -57,6 +57,7 @@
                 FontSize="20"
                 FontAttributes="Bold"
                 Clicked="OnStartClicked">
+            <!--Swipe doesn't work in Android-->
             <!--<Button.GestureRecognizers>
                 <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped"/>
             </Button.GestureRecognizers>-->

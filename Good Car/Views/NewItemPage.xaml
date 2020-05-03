@@ -2,23 +2,55 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:local="clr-namespace:Good_Car.ViewModels"
              mc:Ignorable="d"
              x:Class="Good_Car.Views.NewItemPage"
-             Title="New Item">
+             Title="Your trip">
+
+    <ContentPage.BindingContext>
+        <local:NewItemViewModel/>
+    </ContentPage.BindingContext>
     
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
-    </ContentPage.ToolbarItems>
-    
-    <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--All fares listed-->
+        <StackLayout Grid.Row="0"
+                     BackgroundColor="#323c4d">
+            <Label Text="{Binding DisplayName}"
+                   TextColor="White"
+                   FontSize="100"
+                   FontAttributes="Bold"/>
+        </StackLayout>
+
+        <!--Map in thebackground-->
+        <maps:Map x:Name="map"
+                  Grid.Row="1"
+                  IsShowingUser="true"
+                  />
+
+        <!--Start calculating trip price-->
+        <Button Text=">>>   END TRIP"
+                Grid.Row="1"
+                VerticalOptions="End"
+                Margin="10"
+                TextColor="White"
+                BackgroundColor="#FF4081"
+                FontSize="20"
+                FontAttributes="Bold"
+                Clicked="OnEndClicked">
+        </Button>
+    </Grid>
+
+    <!--<StackLayout Spacing="20" Padding="15">
             <Label Text="Text" FontSize="Medium" />
             <Entry Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small" />
             <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small" Margin="0" />
-        </StackLayout>
-    </ContentPage.Content>
-    
+           <Editor Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small" Margin="0" />
+        </StackLayout>-->
 </ContentPage>
